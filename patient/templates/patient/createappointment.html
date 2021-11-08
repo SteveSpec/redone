@@ -1,0 +1,91 @@
+{% extends "patient/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 style="color: blue;"><b>AFYA CLINIC Management System</b></h1>
+        </header>
+        <section>
+            <div id="container_demo">
+                <a class="hiddenanchor" id="toregister"></a>
+                <a class="hiddenanchor" id="tologin"></a>
+                <div id="wrapper">
+                    <div id="login" class="animate form">
+                            <div class="container">
+                              <h2>Create Appointment</h2><br>
+                              <form action="{% url 'patient-createappointment' %}" method="POST" autocomplete="on">
+                                {% csrf_token %}
+                                {{ form }}
+
+                                <div style="margin-top:2rem" class="form-group">
+                                  <p>
+                                      <input class="btn btn-success" role="button"
+                                          type="submit" value="Register" name="register">
+                                  </p>
+                                </div>
+
+
+                                <!-- <div class="form-group">
+                                  <label for="patient_id"> Patient Id</label>
+                                  <input id="patient_id" type="number" class="form-control" required="required" name="patient_id" placeholder="Patient Id">
+
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="first_name"> First Name </label>
+                                  <input id="first_name" type="text" class="form-control" required="required" name="first_name" placeholder="Your First Name">
+
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="last_name"> Last Name </label>
+                                  <input id="last_name" type="text" class="form-control" required="required" name="last_name" placeholder="Your Last Name">
+
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="gender"> Gender </label>
+
+                                  <div class="form-group">
+                                    <label for="female"> Female </label>
+                                    <input id="female" type="radio" name="female" value="Female"><br>
+
+                                    <label for="male"> Male </label>
+                                    <input id="male" type="radio" name="male" value="Male"><br>
+
+                                    <label for="other"> Other </label>
+                                    <input id="other" type="radio" name="other" value="Other">
+
+                                  </div>
+                                </div> -->
+                                <!-- <br>
+
+                                <p>
+                                    <input class="btn btn-success" role="button"
+                                        type="submit" value="Register" name="register">
+                                </p>
+
+                              </form>
+                            </div>
+                            <br> -->
+
+                            <p class="change_link"><b>
+                                Want to View All Appointments ? </b>
+                                <a href="{% url 'patient-appointment' %}" class="to_register"><b>Appointments</b></a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
+
+{% endblock content %}

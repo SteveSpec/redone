@@ -1,0 +1,71 @@
+{% extends "patient/base.html" %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title</title>
+  </head>
+  <body>
+
+    <h1>Hello, View Your Appointment Below</h1>
+
+    <table border= "2" style= "width:800px;margin:auto">
+        <thead>
+            <tr>
+                <th style="padding-left:20px; "> Date
+                    <br>
+                    <br>
+                </th>
+                <th style="padding-left:20px; "> Patient Name
+                    <br>
+                    <br>
+                </th>
+                <th style="padding-left:20px; "> Gender
+                    <br>
+                    <br>
+                </th>
+                <th style="padding-left:20px; "> Doctor
+                    <br>
+                    <br>
+                </th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for appointment in appointments %}
+            <tr>
+                <td style="padding-left:10px; ">{{ forloop.counter }}
+
+                </td>
+                <td style="padding-left:50px; ">{{ appointment.date }}
+
+                                </td>
+                <td style="padding-left:50px; ">{{ appointment.patient_name }}
+
+                </td>
+                <td style="padding-left:50px; ">{{ appointment.gender }}
+
+                </td>
+                <td style="padding-left:50px; ">{{ appointment.doctor }}
+
+                </td>
+
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    <br>
+    <br>
+
+    <p class="change_link"><b>
+        Want to Book an Appointment ? </b>
+        <a href="{% url 'patient-createappointment' %}" class="to_register"><b> Book Appointment</b></a>
+    </p>
+
+  </body>
+</html>
+{% endblock content %}
