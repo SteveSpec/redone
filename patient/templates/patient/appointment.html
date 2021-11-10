@@ -8,55 +8,67 @@
     <title</title>
   </head>
   <body>
+    <br>
+    <div class="header">
+      <b>List of Appointments</b>
 
-    <h1>Hello, View Your Appointment Below</h1>
+    </div><br>
 
     <table border= "2" style= "width:800px;margin:auto">
-        <thead>
-            <tr>
-                <th style="padding-left:20px; "> Date
-                    <br>
-                    <br>
-                </th>
-                <th style="padding-left:20px; "> Patient Name
-                    <br>
-                    <br>
-                </th>
-                <th style="padding-left:20px; "> Gender
-                    <br>
-                    <br>
-                </th>
-                <th style="padding-left:20px; "> Doctor
-                    <br>
-                    <br>
-                </th>
+      <thead>
+        <tr>
+          <th style="padding-left:20px; "> Date
+              <br>
+              <br>
+          </th>
+          <th style="padding-left:20px; "> Patient Name
+              <br>
+              <br>
+          </th>
+          <th style="padding-left:20px; "> Gender
+              <br>
+              <br>
+          </th>
+          <th style="padding-left:20px; "> Doctor
+              <br>
+              <br>
+          </th>
 
-            </tr>
-        </thead>
+        </tr>
+      </thead>
+    {% for appointment in appointments %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ forloop.date }}</td>
+          <td>{{ forloop.patient_name }}</td>
+          <td>{{ forloop.gender }}</td>
+          <td>{{ forloop.doctor }}</td>
+        </tr>
+    {% endfor %}
 
-        <tbody>
-            {% for appointment in appointments %}
-            <tr>
-                <td style="padding-left:10px; ">{{ forloop.counter }}
+      <tbody>
+        {% for appointment in appointments %}
+        <tr>
+          <td style="padding-left:10px; ">{{ forloop.counter }}
 
-                </td>
-                <td style="padding-left:50px; ">{{ appointment.date }}
+          </td>
+          <td style="padding-left:50px; ">{{ appointment.date }}
 
-                                </td>
-                <td style="padding-left:50px; ">{{ appointment.patient_name }}
+                          </td>
+          <td style="padding-left:50px; ">{{ appointment.patient_name }}
 
-                </td>
-                <td style="padding-left:50px; ">{{ appointment.gender }}
+          </td>
+          <td style="padding-left:50px; ">{{ appointment.gender }}
 
-                </td>
-                <td style="padding-left:50px; ">{{ appointment.doctor }}
+          </td>
+          <td style="padding-left:50px; ">{{ appointment.doctor }}
 
-                </td>
+          </td>
 
-            </tr>
-            {% endfor %}
+        </tr>
+        {% endfor %}
 
-        </tbody>
+      </tbody>
     </table>
     <br>
     <br>

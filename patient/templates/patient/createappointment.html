@@ -21,7 +21,7 @@
                               <h2>Create Appointment</h2><br>
                               <form action="{% url 'patient-createappointment' %}" method="POST" autocomplete="on">
                                 {% csrf_token %}
-                                {{ form }}
+                              <br>  {{ form }} <br>
 
                                 <div style="margin-top:2rem" class="form-group">
                                   <p>

@@ -7,29 +7,23 @@
         <a> {{ appointment.Patient_Id }}</a>
         <small class="text-muted"> {{ appointment.Date }} </small>
       </div> -->
-      <a> {{ appointment.Patient_Id }}</a>
-      <small class="text-muted"> {{ appointment.Date }} </small>
-      <!-- <h4><a class="article-title" href="#"> {{ appointment.First_Name }} </h4> -->
-      <h4><a> {{ appointment.First_Name }} </h4>
-      <h4><a> {{ appointment.Doctor_Id }} </h4>
-      <h4><a> {{ appointment.Doctor_Name }} </h4>
-      <!-- <p class="article-content"> {{ appointment.Doctor_Id }} </p> -->
+      <a> {{ appointment.patient }}</a>
+      <small class="text-muted"> {{ appointment.date }} </small>
+      <h4><a> {{ appointment.doctor }} </h4>
     </div>
 
-    {% for doctor in posts %}
+    <!-- {% for doctor in posts %} -->
     <!-- Doctors -->
-    <div class="media-body">
+    <!-- <div class="media-body">
       <a> {{ doctor.Doctor_Id }} </a>
       <h4> {{ doctor.Doctor_Name }} </h4>
-    </div>
+    </div> -->
 
       {% for patient in posts %}
     <!-- patient -->
     <div class="media-body">
-      <a> {{ patient.Patient_Id }} </a>
-      <h4><a> {{ patient.First_Name }} </h4>
-      <h4><a> {{ patient.Last_Name }} </h4>
-      <h4><a> {{ patient.Gender }} </h4>
+      <a> {{ patient.patient_name }} </a>
+      <h4><a> {{ patient.gender }} </h4>
     </div>
 
 

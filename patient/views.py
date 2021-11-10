@@ -11,11 +11,33 @@ class AppointmentListView(ListView):
     template_name = "patient/appointment.html"
     context_object_name = "appointment"
 
+
+def createappointment(request):
+    form = PatientForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('/createappointment')
+    context = {
+        "form": form,
+    }
+    return render(request, "createappointment.html", context)
+
+def appointment(request):
+    header = 'List of Appointments'
+    queryset = Appointment.objects.all()
+    context = {
+        "header" : header,
+        "queryset": queryset,
+    }
+    return render(request, 'patient/appointment.html', context)
+    
+
 class AppointmentCreateView(CreateView):
     model = Appointment
-    fields = ['patient', 'doctor', 'date']
+    fields = ['patient','doctor', 'date']
     template_name = "patient/createappointment.html"
     success_url = "/"
+
 
 def home(request):
     context = {
@@ -23,14 +45,9 @@ def home(request):
     }
     return render(request, 'patient/home.html', context)
 
+
 def about(request):
     return render(request, 'patient/about.html', {'title':'About Afya'})
-
-def appointment(request):
-    context = {
-        'posts': Appointment.objects.all()
-    }
-    return render(request, 'patient/appointment.html', context)
 
 
 def doctor(request):
