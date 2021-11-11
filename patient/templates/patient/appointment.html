@@ -36,17 +36,19 @@
 
         </tr>
       </thead>
-    {% for appointment in appointments %}
+      <tbody>
+    {% for appointment in form %}
         <tr>
           <td>{{ forloop.counter }}</td>
-          <td>{{ forloop.date }}</td>
-          <td>{{ forloop.patient_name }}</td>
-          <td>{{ forloop.gender }}</td>
-          <td>{{ forloop.doctor }}</td>
+          <td>{{ appointment.date }}</td>
+          <td><a href="{% url 'appointment' appointment.id %}">{{ appointment.patient_name }}</td>
+          <td>{{ appointment.gender }}</td>
+          <td>{{ appointment.doctor }}</td>
         </tr>
     {% endfor %}
+      </tbody>
 
-      <tbody>
+      <!-- <tbody>
         {% for appointment in appointments %}
         <tr>
           <td style="padding-left:10px; ">{{ forloop.counter }}
@@ -68,7 +70,7 @@
         </tr>
         {% endfor %}
 
-      </tbody>
+      </tbody> -->
     </table>
     <br>
     <br>

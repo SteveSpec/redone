@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponse, reverse
 from .models import Patient, Appointment
-from .forms import AppointmentForm, PatientForm
+from .forms import AppointmentForm, PatientForm, AppointmentUpdateForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic import View
 from django.contrib import messages
@@ -18,9 +18,9 @@ def createappointment(request):
         form.save()
         return redirect('/createappointment')
     context = {
-        "form": form,
+        'form': form
     }
-    return render(request, "createappointment.html", context)
+    return render(request, 'patient/createappointment.html', context)
 
 def appointment(request):
     header = 'List of Appointments'
@@ -30,7 +30,21 @@ def appointment(request):
         "queryset": queryset,
     }
     return render(request, 'patient/appointment.html', context)
-    
+
+
+def update_appointment(request, pk):
+    queryset = Appointment.objects.all()
+    form = AppointmentUpdateForm(instance = queryset)
+    if request.method == 'POST':
+        form = AppointmentUpdateForm(request.POST, instance = queryset)
+        if form.is_valid():
+            form.save()
+            return redirect('/appointment')
+
+    context = {
+        'form': form
+    }
+    return render(request, 'patient/appointment.html', context)
 
 class AppointmentCreateView(CreateView):
     model = Appointment

@@ -3,9 +3,11 @@ from .views import AppointmentListView, AppointmentCreateView
 from . import views
 
 urlpatterns = [
-    path('', views.home, name="patient-home"),
+    path('', views.home, name='patient-home'),
     path('about/', views.about, name ='patient-about'),
-    path("appointment", AppointmentListView.as_view(), name="patient-appointment"),
-    path("createappointment/", AppointmentCreateView.as_view(), name="patient-createappointment")
+    path('appointment', AppointmentListView.as_view(), name='patient-appointment'),
+    path('createappointment/', AppointmentCreateView.as_view(), name='patient-createappointment'),
     # path('doctor/', views.doctor, name ='patient-doctor')
+
+    path('update_appointment/<str:pk>/', views.update_appointment, name='patient-appointment')
 ]
