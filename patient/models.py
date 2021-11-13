@@ -24,9 +24,10 @@ DOCTORS = (
 )
 
 # Create your models here.
+
+
 class Patient(models.Model):
     patient_name = models.ForeignKey(User, on_delete=models.CASCADE)
-    gender = models.CharField(max_length=20, choices=GENDER_CHOICES, default="Rather not say")
 
     def __str__(self):
         return self.patient_name
@@ -35,7 +36,9 @@ class Patient(models.Model):
 class Appointment(models.Model):
     patient = models.ForeignKey(User, on_delete=models.CASCADE)
     doctor = models.CharField(max_length=20, choices=DOCTORS, default="Dr. Oreste")
-    date = models.CharField(max_length=20, choices=TIME_CHOICES, default="Noon")
+    gender = models.CharField(max_length=20, choices=GENDER_CHOICES, default="Rather not say")
+    time_of_day = models.CharField(max_length=20, choices=TIME_CHOICES, default="Noon")
+    date = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return "%s Your Appointment is Confirmed!" % self.patient_name
+        return self.patient
