@@ -48,7 +48,7 @@
     {% for appointment in appointments %}
         <tr>
           <td>{{ forloop.counter }}</td>
-          <td><a href="{% url 'patient-appointment' appointment.id %}">{{ appointment.patient }}</td>
+          <td>{{ appointment.patient }}</td>
           <td>{{ appointment.doctor }}</td>
           <td>{{ appointment.gender }}</td>
           <td>{{ appointment.time_of_day }}</td>
