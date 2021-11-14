@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'users',
     'patient',
-    'crispy_forms', 
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -81,9 +81,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'afya',
         'USER': 'root',
-        'PASSWORD': 'kcau',
-        'HOST':'127.0.0.1',
-        'PORT':'3306'
+        'PASSWORD': 'prospect***101',
+        'HOST': 'localhost',
+        'PORT': '3306'
     }
 }
 

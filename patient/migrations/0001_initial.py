@@ -17,18 +17,25 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Patient',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('gender', models.CharField(choices=[('male', 'male'), ('female', 'female'), ('rather not say', 'rather not say')], default='rather not say', max_length=20)),
-                ('patient_name', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
+                ('gender', models.CharField(choices=[('male', 'male'), ('female', 'female'), (
+                    'rather not say', 'rather not say')], default='rather not say', max_length=20)),
+                ('patient_name', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
         migrations.CreateModel(
             name='Appointment',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('doctor', models.CharField(choices=[('Dr. Martin', 'Dr. Martin'), ('Dr. Mutembei', 'Dr. Mutembei'), ('Dr. Steve', 'Dr. Steve'), ('Dr. Cynthia', 'Dr. Cynthia'), ('Dr. Oreste', 'Dr. Oreste')], default='Dr. Oreste', max_length=20)),
-                ('date', models.CharField(choices=[('morning', '11am'), ('noon', '12pm'), ('afternoon', '2pm'), ('evening', '4pm')], default='noon', max_length=20)),
-                ('patient', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
+                ('doctor', models.CharField(choices=[('Dr. Martin', 'Dr. Martin'), ('Dr. Mutembei', 'Dr. Mutembei'), (
+                    'Dr. Steve', 'Dr. Steve'), ('Dr. Cynthia', 'Dr. Cynthia'), ('Dr. Oreste', 'Dr. Oreste')], default='Dr. Oreste', max_length=20)),
+                ('date', models.CharField(choices=[('morning', '11am'), ('noon', '12pm'), (
+                    'afternoon', '2pm'), ('evening', '4pm')], default='noon', max_length=20)),
+                ('patient', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

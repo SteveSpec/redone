@@ -1,15 +1,18 @@
 from django.shortcuts import render, redirect, HttpResponse, reverse
 from .models import Patient, Appointment
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import AppointmentForm, PatientForm, AppointmentUpdateForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.views.generic import View
 from django.contrib import messages
 
 # Create your views here.
+
+
 class AppointmentListView(ListView):
     model = Appointment
     template_name = "patient/appointment.html"
-    context_object_name = "appointment"
+    context_object_name = "appointments"
 
 
 def createappointment(request):
@@ -22,11 +25,12 @@ def createappointment(request):
     }
     return render(request, 'patient/createappointment.html', context)
 
+
 def appointment(request):
     header = 'List of Appointments'
     queryset = Appointment.objects.all()
     context = {
-        "header" : header,
+        "header": header,
         "queryset": queryset,
     }
     return render(request, 'patient/appointment.html', context)
@@ -34,9 +38,9 @@ def appointment(request):
 
 def update_appointment(request, pk):
     queryset = Appointment.objects.all()
-    form = AppointmentUpdateForm(instance = queryset)
+    form = AppointmentUpdateForm(instance=queryset)
     if request.method == 'POST':
-        form = AppointmentUpdateForm(request.POST, instance = queryset)
+        form = AppointmentUpdateForm(request.POST, instance=queryset)
         if form.is_valid():
             form.save()
             return redirect('/appointment')
@@ -46,9 +50,10 @@ def update_appointment(request, pk):
     }
     return render(request, 'patient/appointment.html', context)
 
-class AppointmentCreateView(CreateView):
+
+class AppointmentCreateView(LoginRequiredMixin, CreateView):
     model = Appointment
-    fields = ['patient','doctor', 'date']
+    fields = ['patient', 'doctor', 'gender', 'time_of_day']
     template_name = "patient/createappointment.html"
     success_url = "/"
 
@@ -61,7 +66,7 @@ def home(request):
 
 
 def about(request):
-    return render(request, 'patient/about.html', {'title':'About Afya'})
+    return render(request, 'patient/about.html', {'title': 'About Afya'})
 
 
 def doctor(request):

@@ -17,15 +17,11 @@
     <table border= "2" style= "width:800px;margin:auto">
       <thead>
         <tr>
-          <th style="padding-left:20px; "> Date
-              <br>
-              <br>
+          <th style="padding-left:20px; "> No.
+            <br>
+            <br>
           </th>
           <th style="padding-left:20px; "> Patient Name
-              <br>
-              <br>
-          </th>
-          <th style="padding-left:20px; "> Gender
               <br>
               <br>
           </th>
@@ -33,44 +29,34 @@
               <br>
               <br>
           </th>
+          <th style="padding-left:20px; "> Gender
+              <br>
+              <br>
+          </th>
+          <th style="padding-left:20px; "> Time
+              <br>
+              <br>
+          </th>
+          <th style="padding-left:20px; "> Date
+              <br>
+              <br>
+          </th>
 
         </tr>
       </thead>
       <tbody>
-    {% for appointment in form %}
+    {% for appointment in appointments %}
         <tr>
           <td>{{ forloop.counter }}</td>
-          <td>{{ appointment.date }}</td>
-          <td><a href="{% url 'appointment' appointment.id %}">{{ appointment.patient_name }}</td>
-          <td>{{ appointment.gender }}</td>
+          <td><a href="{% url 'patient-appointment' appointment.id %}">{{ appointment.patient }}</td>
           <td>{{ appointment.doctor }}</td>
+          <td>{{ appointment.gender }}</td>
+          <td>{{ appointment.time_of_day }}</td>
+          <td>{{ appointment.date }}</td>
         </tr>
     {% endfor %}
       </tbody>
 
-      <!-- <tbody>
-        {% for appointment in appointments %}
-        <tr>
-          <td style="padding-left:10px; ">{{ forloop.counter }}
-
-          </td>
-          <td style="padding-left:50px; ">{{ appointment.date }}
-
-                          </td>
-          <td style="padding-left:50px; ">{{ appointment.patient_name }}
-
-          </td>
-          <td style="padding-left:50px; ">{{ appointment.gender }}
-
-          </td>
-          <td style="padding-left:50px; ">{{ appointment.doctor }}
-
-          </td>
-
-        </tr>
-        {% endfor %}
-
-      </tbody> -->
     </table>
     <br>
     <br>
