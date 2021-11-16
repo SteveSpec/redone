@@ -5,14 +5,15 @@ from django.contrib.auth.models import User
 GENDER_CHOICES = (
     ("Male", "Male"),
     ("Female", "Female"),
-    ("Rather not say", "Rather not say"),
+    ("Rather Not Say", "Rather Not Say"),
 )
 
 TIME_CHOICES = (
     ("Morning", "11 AM"),
     ("Noon", "12 PM"),
     ("Afternoon", "2 PM"),
-    ("Evening", "4 PM")
+    ("Evening", "4 PM"),
+    ("Night", "8 PM")
 )
 
 DOCTORS = (
@@ -36,7 +37,7 @@ class Patient(models.Model):
 class Appointment(models.Model):
     patient = models.ForeignKey(User, on_delete=models.CASCADE)
     doctor = models.CharField(max_length=20, choices=DOCTORS, default="Dr. Oreste")
-    gender = models.CharField(max_length=20, choices=GENDER_CHOICES, default="Rather not say")
+    gender = models.CharField(max_length=20, choices=GENDER_CHOICES, default="Rather Not Say")
     time_of_day = models.CharField(max_length=20, choices=TIME_CHOICES, default="Noon")
     date = models.DateField(auto_now_add=True)
 
